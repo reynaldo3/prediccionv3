@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta Alumnos Informática</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <script>
+        function validarFormulario() {
+            var nombre_alumno = document.getElementById('nombre_alumno').value;
+            var correo = document.getElementById('correo').value;
+            var rut = document.getElementById('rut').value;
+            var telefono = document.getElementById('telefono').value;
+            var genero = document.querySelector('input[name="genero"]:checked');
+            var edad = parseInt(document.getElementById('edad').value);
+            var traslado = document.querySelector('input[name="traslado"]').value;
+            var ingresoAcademico = document.querySelector('select[name="ingreso_academico"]').value;
+            var actividadesDuoc = document.querySelector('select[name="actividades_duoc"]').value;
+            var aprobado = document.querySelector('input[name="aprobado"]').value;
+            var reprobado = document.querySelector('input[name="reprobado"]').value;
+            var omitido = document.querySelector('input[name="omitido"]').value;
+            var convalidar = document.querySelector('input[name="convalidar"]').value;
+
+	    // Validar que el campo de nombre no esté vacío
+            if (nombre_alumno == '') {
+                alert('Por favor, ingrese su Nombre.');
+                return false;
+            }
+
+            // Validar el formato del correo electrónico
+            //if (!correo.includes('@')) {
+            //    alert('Por favor, ingresa solamente el usuario, sin @duocuc.cl..');
+            //    return false;
+            //}
+
+	    // Validar que el campo de correo electrónico no esté vacío
+            if (correo == '') {
+                alert('Por favor, ingresa solamente el usuario, sin @duocuc.cl.');
+                return false;
+	    }
+	
+	    // Validar que el campo de RUT no esté vacío
+            if (rut == '') {
+                alert('Por favor, ingresa tu Rut.');
+                return false;
+	    }
+            // Validar el formato del RUT
+            var regexRut = /^\d{7,8}-[\dkK]$/;
+            if (!regexRut.test(rut)) {
+                alert('Por favor, ingresa un RUT válido (formato sin puntos ejemplo: 12345678-9).');
+                return false;
+            }
+
+	     // Validar que el campo de teléfono no esté vacío
+            if (telefono == '') {
+                alert('Por favor, ingrese su número de teléfono.');
+                return false;
+            }
+
+            // Validar que el teléfono tenga exactamente 9 dígitos
+            if (!/^\d{9}$/.test(telefono)) {
+                alert('Por favor, ingrese un número de teléfono válido (debe contener 9 números (ejemplo: 987654321)).');
+                return false;
+            }
+
+            // Validar que se haya seleccionado una opción de género
+            if (!genero) {
+                alert('Por favor, selecciona tu género.');
+                return false;
+            }
+
+	    // Validar que la edad esté dentro del rango de 17 a 90 años
+            if (isNaN(edad) || edad < 17 || edad > 90) {
+                alert('Por favor, ingrese una edad válida, entre 17 y 90 años.');
+                return false;
+            } 
+
+	    // Validar que el campo motivacion no esté vacío
+            if (motivacion == '') {
+                alert('Por favor, ingresa que tan motivado te encuentras para continuar la carrera.');
+                return false;
+            }
+
+	    // Validar que el campo horas_estudio no esté vacío
+            if (horas_estudio == '') {
+                alert('Por favor, ingresa cuantas horas le dedicas al estudio semanalmente.');
+                return false;
+            }
+
+	    // Validar que el campo horas_amigos no esté vacío
+            if (horas_amigos == '') {
+                alert('Por favor, ingresa cuantas horas le dedicas a tus amigos semanalmente.');
+                return false;
+            }
+
+ 	    // Validar que el campo horas_deporte no esté vacío
+            if (horas_deporte == '') {
+                alert('Por favor, ingresa cuantas horas le dedicas a tu realizar deporte semanalmente.');
+                return false;
+            }
+
+	    // Validar que el campo horas_hobbie no esté vacío
+            if (horas_hobbie == '') {
+                alert('Por favor, ingresa cuantas horas le dedicas a tu hobbie favorito.');
+                return false;
+            }
+
+	    // Validar que el campo de estres no esté vacío
+            if (estres == '') {
+                alert('Por favor, ingresa que tan estresado te encuentras cursando la carrera.');
+                return false;
+            }
+
+	    // Validar que el campo de satisfaccion no esté vacío
+            if (satisfaccion == '') {
+                alert('Por favor, ingresa que tan satisfecho te encuentras cursando la carrera.');
+                return false;
+            }
+
+	    // Validar que el campo de traslado no esté vacío
+            if (traslado == '') {
+                alert('Por favor, ingrese cuantos minutos se demora en trasladarse a Duocuc.');
+                return false;
+            }
+
+	    // Validar que el campo aprobado  no esté vacío
+            if (aprobado  == '') {
+                alert('Por favor, ingrese el total de asignaturas aprobadas.');
+                return false;
+            }
+
+	    // Validar que el campo reprobado no esté vacío
+            if (reprobado == '') {
+                alert('Por favor, ingrese el total de asignaturas reprobadas.');
+                return false;
+            }
+
+	    // Validar que el campo omitido no esté vacío
+            if (reprobado == '') {
+                alert('Por favor, ingrese el total de asignaturas omitidas.');
+                return false;
+            }
+
+	    // Validar que el campo convalidar no esté vacío
+            if (convalidar == '') {
+                alert('Por favor, ingrese el total de asignaturas convalidadas.');
+                return false;
+            }
+
+            // Si todos los campos están validados correctamente, enviar el formulario
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="imagenes/logo-duoc.png" alt="Duoc UC Logo">
+            <h2>Encuesta Alumnos Informática</h2>
+        </div>
+        <br>
+        <form action="procesar_formulario.php" method="POST" onsubmit="return validarFormulario()">
+            <h3>Datos Personales</h3>
+            <div class="form-group">
+                <label for="nombre_alumno" class="bold">Nombre del alumno:</label>
+                <input type="text" id="nombre_alumno" name="nombre_alumno" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="edad" class="bold">Edad: (entre 17 y 90)</label>
+                <input type="number" id="edad" name="edad" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="correo" class="bold">Correo electrónico institucional: (ejemplo: si el correo es usuario@duocuc.cl solo se ingresa usuario)</label>
+                <div class="input-group">
+                    <input type="text" id="correo" name="correo" class="form-control" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">@duocuc.cl</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rut" class="bold">RUT: (ejemplo: 1234567-8)</label>
+                <input type="text" id="rut" name="rut" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono" class="bold">Teléfono: (debe contener 9 digitos, ejemplo: 987654321</label>
+                <input type="text" id="telefono" name="telefono" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label class="bold">Género:</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genero" id="generoMasculino" value="Masculino">
+                    <label class="form-check-label" for="generoMasculino">Masculino</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genero" id="generoFemenino" value="Femenino">
+                    <label class="form-check-label" for="generoFemenino">Femenino</label>
+                </div>
+            </div>
+            <h3>Motivación</h3>
+            <div class="form-group">
+                <label for="motivacion" class="bold">¿Qué tan motivado te encuentras para continuar la carrera? (de 1 a 10)</label>
+                <input type="number" id="motivacion" name="motivacion" class="form-control" min="1" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="horas_estudio" class="bold">¿Cuántas horas semanales le dedicas al estudio fuera de clases? (entre 0 y 90)</label>
+                <input type="number" id="horas_estudio" name="horas_estudio" class="form-control" min="0" max="90" required>
+            </div>
+            <div class="form-group">
+                <label for="horas_amigos" class="bold">¿Cuántas horas semanales le dedicas a pasar con tus amigos? (entre 0 y 90)</label>
+                <input type="number" id="horas_amigos" name="horas_amigos" class="form-control" min="0" max="90" required>
+            </div>
+            <div class="form-group">
+                <label for="horas_deporte" class="bold">¿Cuántas horas semanales le dedicas a realizar deporte? (entre 0 y 90)</label>
+                <input type="number" id="horas_deporte" name="horas_deporte" class="form-control" min="0" max="90" required>
+            </div>
+            <div class="form-group">
+                <label for="horas_hobbie" class="bold">¿Cuántas horas semanales le dedicas a tu hobbie favorito? (entre 0 y 90)</label>
+                <input type="number" id="horas_hobbie" name="horas_hobbie" class="form-control" min="0" max="90" required>
+            </div>
+            <h3>Salud</h3>
+            <div class="form-group">
+                <label for="estres" class="bold">¿Qué tan estresado te encuentras académicamente? (de 1 a 10)</label>
+                <input type="number" id="estres" name="estres" class="form-control" min="1" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="satisfaccion" class="bold">¿Qué tan satisfecho te encuentras con la carrera que estás cursando? (de 1 a 10)</label>
+                <input type="number" id="satisfaccion" name="satisfaccion" class="form-control" min="1" max="10" required>
+            </div>
+            <h3>Situación Económica</h3>
+            <div class="form-group">
+                <label for="situacion_laboral" class="bold">Seleccione la situación laboral que mejor lo describa en el último año</label>
+                <select id="situacion_laboral" name="situacion_laboral" class="form-control" required>
+                    <option value="Trabajo full-time">Trabajo full-time</option>
+                    <option value="Trabajo part-time">Trabajo part-time</option>
+                    <option value="Desempleado">Desempleado</option>
+                    <option value="Estudiante">Estudiante</option>
+                    <option value="Emprendedor">Emprendedor</option>
+                </select>
+            </div>
+            <h3>Información Académica</h3>
+            <div class="form-group">
+                <label for="traslado" class="bold">¿Cuántos minutos demoras en trasladarte desde tu hogar a tu sede Duoc? (entre 1 y 120)</label>
+                <input type="number" id="traslado" name="traslado" class="form-control" min="1" max="120" required>
+            </div>
+            <div class="form-group">
+                <label for="ingreso_academico" class="bold">¿En qué año ingresaste a la carrera que estás cursando?</label>
+                <select id="ingreso_academico" name="ingreso_academico" class="form-control" required>
+                    <option value="año 2019">año 2019</option>
+                    <option value="año 2020">año 2020</option>
+                    <option value="año 2021">año 2021</option>
+                    <option value="año 2022">año 2022</option>
+                    <option value="año 2023">año 2023</option>
+                    <option value="año 2024">año 2024</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="actividades_duoc" class="bold">¿Qué tan seguido participas de las actividades de Duoc?</label>
+                <select id="actividades_duoc" name="actividades_duoc" class="form-control" required>
+                    <option value="frecuentemente">frecuentemente</option>
+                    <option value="a veces">a veces</option>
+                    <option value="nunca">nunca</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="aprobado" class="bold">¿Cuántas materias has aprobado a la fecha? (entres 0 y 50)</label>
+                <input type="number" id="aprobado" name="aprobado" class="form-control" min="0" max="50" required>
+            </div>
+            <div class="form-group">
+                <label for="reprobado" class="bold">¿Cuántas materias has reprobado a la fecha? (entre 0 y 50)</label>
+                <input type="number" id="reprobado" name="reprobado" class="form-control" min="0" max="50" required>
+            </div>
+            <div class="form-group">
+                <label for="omitido" class="bold">¿Cuántas materias has omitido a la fecha? (entre 0 y 50)</label>
+                <input type="number" id="omitido" name="omitido" class="form-control" min="0" max="50" required>
+            </div>
+            <div class="form-group">
+                <label for="convalidar" class="bold">¿Cuántas materias has eximido o convalidado a la fecha? (entre 0 y 50)</label>
+                <input type="number" id="convalidar" name="convalidar" class="form-control" min="0" max="50" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
