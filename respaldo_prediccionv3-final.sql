@@ -33,7 +33,6 @@ CREATE TABLE `formulario_prediccionv3` (
   `edad` int NOT NULL,
   `correo` varchar(255) NOT NULL,
   `rut` varchar(255) NOT NULL,
-  `telefono` varchar(20) DEFAULT '',
   `genero` varchar(20) NOT NULL,
   `motivacion` int NOT NULL,
   `horas_estudio` int NOT NULL,

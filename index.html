@@ -11,7 +11,6 @@
             var nombre_alumno = document.getElementById('nombre_alumno').value;
             var correo = document.getElementById('correo').value;
             var rut = document.getElementById('rut').value;
-            var telefono = document.getElementById('telefono').value;
             var genero = document.querySelector('input[name="genero"]:checked');
             var edad = parseInt(document.getElementById('edad').value);
             var traslado = document.querySelector('input[name="traslado"]').value;
@@ -49,18 +48,6 @@
             var regexRut = /^\d{7,8}-[\dkK]$/;
             if (!regexRut.test(rut)) {
                 alert('Por favor, ingresa un RUT válido (formato sin puntos ejemplo: 12345678-9).');
-                return false;
-            }
-
-	     // Validar que el campo de teléfono no esté vacío
-            if (telefono == '') {
-                alert('Por favor, ingrese su número de teléfono.');
-                return false;
-            }
-
-            // Validar que el teléfono tenga exactamente 9 dígitos
-            if (!/^\d{9}$/.test(telefono)) {
-                alert('Por favor, ingrese un número de teléfono válido (debe contener 9 números (ejemplo: 987654321)).');
                 return false;
             }
 
@@ -182,10 +169,6 @@
             <div class="form-group">
                 <label for="rut" class="bold">RUT: (ejemplo: 1234567-8)</label>
                 <input type="text" id="rut" name="rut" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="telefono" class="bold">Teléfono: (debe contener 9 digitos, ejemplo: 987654321</label>
-                <input type="text" id="telefono" name="telefono" class="form-control" required>
             </div>
             <div class="form-group">
                 <label class="bold">Género:</label><br>

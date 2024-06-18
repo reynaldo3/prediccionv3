@@ -34,7 +34,6 @@ $aprobado = $_POST['aprobado'];
 $reprobado = $_POST['reprobado'];
 $omitido = $_POST['omitido'];
 $convalidar = $_POST['convalidar'];
-$telefono = $_POST['telefono'];
 
 // Validar el formato del correo electrónico
 if (strpos($correo, '@') !== false) {
@@ -47,7 +46,7 @@ if (strpos($correo, '@') !== false) {
     echo '<div style="text-align: center; background-color: #00BFFF; font-size: 100px; padding: 100px; margin: 0 auto; width: 58%; height: auto;">
             "El correo electrónico no puede contener @."<br><br>
             <div style="text-align: center; margin-top: 20px;">
-                <a href="http://201.187.234.121" style="text-decoration: none; color: #000; background-color: #FFD700; padding: 10px 20px; border-radius: 5px;">Volver al formulario</a>
+                <a href="http://201.187.242.144" style="text-decoration: none; color: #000; background-color: #FFD700; padding: 10px 20px; border-radius: 5px;">Volver al formulario</a>
             </div>
           </div>';
    exit;
@@ -76,14 +75,14 @@ if ($result_check->num_rows > 0) {
     echo '<div style="text-align: center; background-color: #00BFFF; font-size: 100px; padding: 100px; margin: 0 auto; width: 58%; height: auto;">
 	    "Ya existe un registro con el mismo correo electrónico o RUT en la base de datos."<br><br>
             <div style="text-align: center; margin-top: 20px;">
-                <a href="http://201.187.234.121" style="text-decoration: none; color: #000; background-color: #FFD700; padding: 10px 20px; border-radius: 5px;">Volver al formulario</a>
+                <a href="http://201.187.242.144" style="text-decoration: none; color: #000; background-color: #FFD700; padding: 10px 20px; border-radius: 5px;">Volver al formulario</a>
             </div>
           </div>';
     } else {
     
 // Preparar la consulta SQL para insertar los datos en la base de datos
-$sql = "INSERT INTO formulario_prediccionv3 (nombre_alumno, edad, correo, rut, telefono, genero, motivacion, horas_estudio, horas_amigos, horas_deporte, horas_hobbie, estres, satisfaccion, situacion_laboral, traslado, ingreso_academico, actividades_duoc, aprobado, reprobado, omitido, convalidar)
-VALUES ('$nombre_alumno', $edad, '$correo_completo', '$rut', '$telefono', '$genero', $motivacion, $horas_estudio, $horas_amigos, $horas_deporte, $horas_hobbie, $estres, $satisfaccion ,'$situacion_laboral', $traslado, '$ingreso_academico', '$actividades_duoc', $aprobado, $reprobado, $omitido, $convalidar)";
+$sql = "INSERT INTO formulario_prediccionv3 (nombre_alumno, edad, correo, rut, genero, motivacion, horas_estudio, horas_amigos, horas_deporte, horas_hobbie, estres, satisfaccion, situacion_laboral, traslado, ingreso_academico, actividades_duoc, aprobado, reprobado, omitido, convalidar)
+VALUES ('$nombre_alumno', $edad, '$correo_completo', '$rut', '$genero', $motivacion, $horas_estudio, $horas_amigos, $horas_deporte, $horas_hobbie, $estres, $satisfaccion ,'$situacion_laboral', $traslado, '$ingreso_academico', '$actividades_duoc', $aprobado, $reprobado, $omitido, $convalidar)";
 
 // if ($conn->query($sql) === TRUE) {
 //    echo '<div style="text-align: center; background-color: #00BFFF; font-size: 100px; padding: 400px; margin: 0 auto; width: 58%; height: 100%;">"Gracias por contestar la encuesta."</div>';
@@ -100,7 +99,7 @@ if ($conn->query($sql) === TRUE) {
     echo '<div style="text-align: center; background-color: #00BFFF; font-size: 100px; padding: 100px; margin: 0 auto; width: 58%; height: auto;">
             "Gracias por contestar la encuesta."<br><br>
             <div style="text-align: center; margin-top: 20px;">
-                <a href="http:///201.187.234.121" style="text-decoration: none; color: #000; background-color: #FFD700; padding: 10px 20px; border-radius: 5px;">Volver al formulario</a>
+                <a href="http:///201.187.232.144" style="text-decoration: none; color: #000; background-color: #FFD700; padding: 10px 20px; border-radius: 5px;">Volver al formulario</a>
              </div>
           </div>';
     } else {
